@@ -1,0 +1,3 @@
+let &runtimepath.=',$CAFFEINE'
+source $CAFFEINE/bundle/Caffeine/.caffeinerc
+source $CAFFEINE/bundle/Vundle/.vundlerc
