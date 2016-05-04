@@ -1,3 +1,5 @@
 let &runtimepath.=',$CAFFEINE'
-source $CAFFEINE/bundle/Caffeine/.caffeinerc
-source $CAFFEINE/bundle/Vundle/.vundlerc
+source $CAFFEINE/.vundlerc
+source $CAFFEINE/config/.functions.vim
+source $CAFFEINE/config/.commands.vim
+source $CAFFEINE/config/.keybindings.vim

@@ -46,7 +46,18 @@ SYSTEM_PACKAGE_MANAGER="apt-get"
 SYSTEM_PACKAGE_MANAGER_UPDATE="apt-get update"
 SYSTEM_PACKAGE_MANAGER_INSTALL="apt-get -y install"
 
-DEPENDENCIES="git vim-gtk clang-3.8 clang-format-3.8 lldb-3.8 ctags"
+DEPENDENCIES="\
+	wget
+	git \
+	vim-gtk \
+	clang-3.8 \
+	clang-format-3.8 \
+	libclang-3.8-dev \
+	ctags \
+	cmake \
+	python-dev \
+	python3-dev \
+"
 
 ###################################################################################
 # PROMPT USER FOR PASSWORD
@@ -59,6 +70,17 @@ read password
 stty $ORIGINAL_STTY
 
 ###################################################################################
+# CREATE DESKTOP, TERMINAL, AND APPLICATION MENU SHORTCUTS
+sed -i '/^Exec=/ s\$\ -u '"$INSTALL_DIR"'/.caffeinerc\' $CURRENT_DIR/resources/caffeine.desktop
+caffeine_alias=`grep -w "Exec" $CURRENT_DIR/resources/caffeine.desktop | sed s/Exec=//`
+echo "# Caffeine alias" >> $HOME/.bashrc
+echo "alias caffeine=\""$caffeine_alias"\"" >> $HOME/.bashrc
+echo "# Caffeine home directory" >> $HOME/.bashrc
+echo "export CAFFEINE="$INSTALL_DIR"/.caffeine" >> $HOME/.bashrc
+echo "# Caffeine rc file" >> $HOME/.bashrc
+echo "export CAFFEINERC="$INSTALL_DIR"/.caffeinerc" >> $HOME/.bashrc
+
+###################################################################################
 # CREATE DIRECTORY STRUCTURE AND COPY FILES
 
 echo -e "\n"
@@ -66,8 +88,8 @@ echo "--------------------------------------------------------------------------
 echo "Creating directory structure and copying files..."
 echo "----------------------------------------------------------------------------"
 
-echo "$password" | sudo -S cp -R $CURRENT_DIR/.caffeine $INSTALL_DIR/
-echo "$password" | sudo -S cp $CURRENT_DIR/.caffeinerc $INSTALL_DIR
+cp -R $CURRENT_DIR/.caffeine $INSTALL_DIR/
+cp $CURRENT_DIR/.caffeinerc $INSTALL_DIR
 
 ###################################################################################
 # INSTALL DEPENDENCIES
@@ -84,12 +106,6 @@ mkdir -p $HOME/.fonts
 git clone https://github.com/Lokaltog/powerline-fonts.git $HOME/.fonts
 fc-cache -vf $HOME/.fonts
 
-#TODO build YCM
-
-echo $CAFFEINE
-echo $CURRENT_DIR
-echo $INSTALL_DIR
-
 ###################################################################################
 # INSTALL VIM PLUGINS
 
@@ -97,7 +113,20 @@ echo -e "\n"
 echo "----------------------------------------------------------------------------"
 echo "Installing plugins..."
 echo "----------------------------------------------------------------------------"
-
-echo "$password" | sudo -S git clone https://github.com/VundleVim/Vundle.vim.git $CAFFEINE/bundle/Vundle
+git clone https://github.com/VundleVim/Vundle.vim.git $CAFFEINE/bundle/Vundle
 vim -u $CAFFEINERC +PluginInstall +qall
 
+mkdir -p $CURRENT_DIR/.tmp/ycm/llvm
+cd $CURRENT_DIR/.tmp/ycm/llvm
+
+wget http://llvm.org/releases/3.8.0/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz
+
+tar -xvf clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz
+
+cd ..
+
+cmake -G "Unix Makefiles" -DEXTERNAL_LIBCLANG_PATH=/usr/lib/llvm-3.8/lib/libclang-3.8.so . $CAFFEINE/bundle/YouCompleteMe/third_party/ycmd/cpp
+
+cmake --build . --target ycm_core
+
+rm -rf $CURRENT_DIR/.tmp

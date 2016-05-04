@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=caffeine
+GenericName=IDE
+Comment=Integrated Development Environment for C/C++
+TryExec=gvim
+Exec=gvim --servername caffeine -f -N -u /home/conrad/caffeine/.caffeinerc -u /home/conrad/caffeine/.caffeinerc
+Terminal=false
+Type=Application
+Icon=vim
+Categories=Development;IDE;
+StartupNotify=true
+MimeType=text/plain;

@@ -2,8 +2,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " Set the runtime path to include Vundle and initialize:
-set rtp+=$CAFFEINE/bundle/Vundle
-call vundle#begin('$CAFFEINE/bundle')
+set rtp+=~/caffeine/.caffeine/bundle/Vundle
+call vundle#begin('~/caffeine/.caffeine/bundle')
 
 " Vundle
 Plugin 'VundleVim/Vundle.vim', {'name': 'Vundle'}
