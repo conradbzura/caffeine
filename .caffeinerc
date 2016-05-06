@@ -1,5 +1,7 @@
 let &runtimepath.=',$CAFFEINE'
+behave mswin
 source $CAFFEINE/.vundlerc
 source $CAFFEINE/config/.functions.vim
 source $CAFFEINE/config/.commands.vim
 source $CAFFEINE/config/.keybindings.vim
+source $CAFFEINE/config/.camelcasemotion.vim
