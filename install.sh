@@ -79,6 +79,7 @@ echo "# Caffeine home directory" >> $HOME/.bashrc
 echo "export CAFFEINE="$INSTALL_DIR"/.caffeine" >> $HOME/.bashrc
 echo "# Caffeine rc file" >> $HOME/.bashrc
 echo "export CAFFEINERC="$INSTALL_DIR"/.caffeinerc" >> $HOME/.bashrc
+source $HOME/.bashrc
 
 ###################################################################################
 # CREATE DIRECTORY STRUCTURE AND COPY FILES
@@ -103,7 +104,7 @@ echo "$password" | sudo -S $SYSTEM_PACKAGE_MANAGER_UPDATE
 echo "$password" | sudo -S $SYSTEM_PACKAGE_MANAGER_INSTALL $DEPENDENCIES
 
 mkdir -p $HOME/.fonts
-git clone https://github.com/Lokaltog/powerline-fonts.git $HOME/.fonts
+git clone https://github.com/powerline/fonts.git $HOME/.fonts
 fc-cache -vf $HOME/.fonts
 
 ###################################################################################
@@ -119,9 +120,9 @@ vim -u $CAFFEINERC +PluginInstall +qall
 mkdir -p $CURRENT_DIR/.tmp/ycm/llvm
 cd $CURRENT_DIR/.tmp/ycm/llvm
 
-wget http://llvm.org/releases/3.8.0/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz
+#wget http://llvm.org/releases/3.8.0/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz
 
-tar -xvf clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz
+#tar -xvf clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz
 
 cd ..
 

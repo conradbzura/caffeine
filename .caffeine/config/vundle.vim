@@ -22,6 +22,7 @@ Plugin 'majutsushi/tagbar', {'name': 'TagBar'}
 
 " Airline
 Plugin 'bling/vim-airline', {'name': 'Airline'}
+Plugin 'bling/vim-airline/vim-airline-themes', {'name': 'AirlineThemes'}
 
 " A
 Plugin 'vim-scripts/a.vim', {'name': 'A'}
