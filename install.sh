@@ -53,7 +53,9 @@ DEPENDENCIES="\
 	clang-3.8 \
 	clang-format-3.8 \
 	libclang-3.8-dev \
-	ctags \
+	libc++-dev \
+    libc++abi-dev \
+    ctags \
 	cmake \
 	python-dev \
 	python3-dev \
@@ -126,7 +128,7 @@ cd $CURRENT_DIR/.tmp/ycm/llvm
 
 cd ..
 
-cmake -G "Unix Makefiles" -DEXTERNAL_LIBCLANG_PATH=/usr/lib/llvm-3.8/lib/libclang-3.8.so . $CAFFEINE/bundle/YouCompleteMe/third_party/ycmd/cpp
+cmake -G "Unix Makefiles" -DEXTERNAL_LIBCLANG_PATH=/usr/lib/llvm-3.8/lib/libclang-3.8.so.1 . $CAFFEINE/bundle/YouCompleteMe/third_party/ycmd/cpp
 
 cmake --build . --target ycm_core
 
