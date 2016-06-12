@@ -12,15 +12,15 @@ endif
 
 hi Cursor   	guibg=#e59400   gui=none
 hi VertSplit	guifg=#d1d2d2   guibg=#ffffff   gui=none
-hi Folded	    guifg=#141719   guibg=#e9eaea  
-hi FoldColumn	guifg=tan       guibg=grey30
+hi Folded	    guifg=#c6c6c6   guibg=#ffffff  
+hi FoldColumn	guifg=#c6c6c6   guibg=#ffffff
 hi IncSearch	guifg=#ffffff   guibg=#141719
 hi MoreMsg	    guifg=#71141c
 hi NonText	    guifg=#c6c6c6   guibg=#ffffff
-hi Question	    guifg=springgreen
-hi SpecialKey	guifg=yellowgreen
-hi Title	    guifg=indianred
-hi WarningMsg	guifg=#ce8500
+hi Question	    guifg=#03a7c7
+hi SpecialKey	guifg=#c46270
+hi Title	    guifg=#444444
+hi WarningMsg	guifg=#e59400
 hi CursorLine   guibg=#ffffff
 hi CursorColumn guibg=#ffffff
 hi CursorLineNr guifg=#e59400   guibg=#ffffff   gui=bold
@@ -37,7 +37,7 @@ hi Statement	guifg=#B14E42
 hi PreProc	    guifg=#0f8a6b   gui=bold
 hi Type		    guifg=#02768D
 hi Special	    guifg=#77a5b2
-hi Ignore 	    guifg=grey40
+hi Ignore 	    guifg=#c6c6c6
 hi Todo		    guifg=#7e8284   guibg=#ffffff   gui=italic,bold
 hi String       guifg=#28bd73 
 hi Character    guifg=#28bd73
