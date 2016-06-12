@@ -9,3 +9,5 @@ source $CAFFEINE/config/keybindings.vim
 source $CAFFEINE/config/vundle.vim
 source $CAFFEINE/config/settings.vim
 source $CAFFEINE/config/camelcasemotion.vim
+source $CAFFEINE/config/airline.vim
+source $CAFFEINE/config/gitgutter.vim
