@@ -1,12 +1,14 @@
 " Remap visual-mode
 map <C-S-v> <C-V>
 
-" Find & replace prompt (ctrl-f)
+" Find prompt (ctrl-f)
 noremap <C-f> :promptfind<CR>
 vnoremap <C-f> :promptfind<CR>
 onoremap <C-f> <C-C>:promptfind<CR>
 inoremap <C-f> <C-O>:promptfind<CR>
 cnoremap <C-f> <C-C>:promptfind<CR>
+
+"TODO add find-and-replace prompt
 
 " Select all (ctrl-a)
 noremap <C-A> gggH<C-O>G
@@ -30,15 +32,11 @@ exe 'vnoremap <script>  <C-v> '       . paste#paste_cmd['v']
 
 " Move to start of line (home)
 nnoremap <expr> <Home> virtcol(".") > 1 ? 'g0' : 'g^'
-" (temporary work-around for not being able to remap home key in insert mode)
-inoremap <A-Home> <Esc>I
 xnoremap <Home> <Esc><Home>
 snoremap <Home> <Esc><Home>i
 
 " Move to end of line (end)
 nnoremap <expr> <End> virtcol(".") < virtcol("$") ? 'g$l' : 'g_l'
-" (temporary work-around for not being able to remap end key in insert mode)
-inoremap <A-End> <Esc>A
 xmap <End> <Esc><End>
 snoremap <End> <Esc><End>a
 
@@ -79,10 +77,10 @@ xnoremap <S-Right> <Right>
 xnoremap <S-Left> <Left>
 xnoremap <S-Up> <Up>
 xnoremap <S-Down> <Down>
-xmap <Right> <Esc>
-xmap <Left> <Esc>
-xmap <Up> <Esc>
-xmap <Down> <Esc>
+xmap <Right> <Esc><Right>
+xmap <Left> <Esc><Left>
+xmap <Up> <Esc><Up>
+xmap <Down> <Esc><Down>
 
 " Visual-mode home/end-select (shft-home/end)
 xmap <expr> <S-Home> virtcol(".") > 1 ? 'g0' : 'g^'
@@ -97,24 +95,26 @@ snoremap <S-Right> <Right>
 snoremap <S-Left> <Left>
 snoremap <S-Up> <Up>
 snoremap <S-Down> <Down>
-smap <Right> <Esc>a
-smap <Left> <Esc>a
-smap <Up> <Esc>a
-smap <Down> <Esc>a
+smap <Right> <Esc><Right>a
+smap <Left> <Esc><Left>a
+smap <Up> <Esc><Up>a
+smap <Down> <Esc><Down>a
 
 " Select-mode home/end-select (shft-home/end)
 smap <expr> <S-Home> virtcol(".") > 1 ? '<C-G>g0<C-G>' : '<C-G>g^<C-G>'
 snoremap <expr> <S-End> virtcol(".") < virtcol("$") ? '<C-G>g$l<C-G>' : '<C-G>g_l<C-G>'
 
+"TODO fix
 " Move selection left (alt-left)
-nnoremap <A-Left> Xph
-inoremap <A-Left> <Esc>Xpi
-vnoremap <A-Left> "+xh"+gP`[v`]
+"nnoremap <A-Left> Xph
+"inoremap <A-Left> <Esc>Xpi
+"vnoremap <A-Left> "+xh"+gP`[v`]
 
+"TODO fix
 " Move selection left (alt-left)
-nnoremap <A-Right> xp
-inoremap <A-Right> <Esc>xpi
-vnoremap <A-Right> "+xl"+gP`[v`]
+"nnoremap <A-Right> xp
+"inoremap <A-Right> <Esc>xpi
+"vnoremap <A-Right> "+xl"+gP`[v`]
 
 " Move selected lines up (alt-up)
 nnoremap <A-Up> :m .-2<CR>==
@@ -126,18 +126,20 @@ nnoremap <A-Down> :m .+1<CR>==
 vnoremap <A-Down> :m '>+1<CR>gv=gv
 inoremap <A-Down> <Esc>:m .+1<CR>==gi
 
+"TODO fix
 " Undo (ctrl-z)
-nnoremap <C-z> u
-inoremap <C-z> <C-O>u
+"nnoremap <C-z> u
+"inoremap <C-z> <C-O>u
 
+"TODO fix
 " Redo (ctrl-shft-z)
-nnoremap <C-S-z> <C-R>
-inoremap <C-S-z> <C-O><C-R>
+"nnoremap <C-S-z> <C-R>
+"inoremap <C-S-z> <C-O><C-R>
 
 " Delete line (ctrl-d)
 nnoremap <C-d> dd
+vnoremap <C-d> d
 inoremap <C-d> <ESC>ddi
-vnoremap <C-d> ddd
 
 " Indent (tab)
 nnoremap <Tab> >>
@@ -153,4 +155,7 @@ nmap <F8> :TagbarToggle<CR>
 
 " Misc
 nnoremap <expr> <Left> col(".") > 1 ? 'h' : '<Left>l'
+
+"TODO determine source of other escape-key mapping
+"inoremap <Esc> <Right><Esc>
 

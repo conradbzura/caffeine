@@ -8,7 +8,7 @@ echo -e "Usage:"
 echo -e "    install.sh <directory>"
 echo -e "Args:"
 echo -e "    <directory>"
-echo -e "        Optional argument defining installation directory. Default location is '"$INSTALL_DIR_DEFAULT"'."
+echo -e "        Optional argument defining installation directory. Default location is '"$HOME"/caffeine'."
 exit
 }
 
@@ -22,9 +22,13 @@ export CAFFEINERC=$INSTALL_DIR"/.caffeinerc"
 
 if [ $# -eq 0 ]; then
     echo "Using default installation directory: '"$INSTALL_DIR"'"
+    if [ ! -d "$INSTALL_DIR" ]; then
+        echo "Default install directory '"$INSTALL_DIR"' does not exist, creating it now."
+        mkdir $INSTALL_DIR
+    fi
 elif [ $# -eq 1 ]; then
     INSTALL_DIR=${1%/}
-    if [ ! -d INSTALL_DIR ]; then
+    if [ ! -d "$INSTALL_DIR" ]; then
         echo "Directory '"$INSTALL_DIR"' does not exist."
         print_usage
         echo "Exiting..."
@@ -73,6 +77,9 @@ stty $ORIGINAL_STTY
 
 ###################################################################################
 # CREATE DESKTOP, TERMINAL, AND APPLICATION MENU SHORTCUTS
+
+#TODO the sed command below is broken (only works for a single install), should
+# create temporary desktop file and modify that instead
 sed -i '/^Exec=/ s\$\ -u '"$INSTALL_DIR"'/.caffeinerc\' $CURRENT_DIR/resources/caffeine.desktop
 caffeine_alias=`grep -w "Exec" $CURRENT_DIR/resources/caffeine.desktop | sed s/Exec=//`
 echo "# Caffeine alias" >> $HOME/.bashrc
