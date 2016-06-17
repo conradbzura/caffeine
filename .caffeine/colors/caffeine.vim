@@ -29,8 +29,8 @@ hi LineNr       guifg=#c6c6c6   guibg=#ffffff
 " syntax highlighting groups
 hi Normal	    guifg=#444444   guibg=#ffffff
 hi Visual       guibg=#fff6e6
-hi Search       guifg=#e59400   gui=bold 
-hi Comment	    guifg=#888888   gui=italic
+hi Search       guifg=#e59400   guibg=#fff6e6   gui=bold 
+hi Comment	    guifg=#8A8A8A   gui=italic
 hi Constant	    guifg=#0f8a6b
 hi Identifier	guifg=#2f6742
 hi Statement	guifg=#B14E42
@@ -38,7 +38,7 @@ hi PreProc	    guifg=#0f8a6b   gui=bold
 hi Type		    guifg=#02768D
 hi Special	    guifg=#77a5b2
 hi Ignore 	    guifg=#c6c6c6
-hi Todo		    guifg=#7e8284   guibg=#ffffff   gui=italic,bold
+hi Todo		    guifg=#8A8A8A   guibg=#ffffff   gui=italic,bold
 hi String       guifg=#28bd73 
 hi Character    guifg=#28bd73
 hi MatchParen   guifg=#e59400   guibg=#ffffff   gui=bold

@@ -9,3 +9,5 @@ set whichwrap+=<,>,[,]
 set virtualedit=onemore
 set number
 set cursorline
+set guifont=DejaVu\ Sans\ Mono\ for\ Power\ Line\ 11
+set laststatus=2

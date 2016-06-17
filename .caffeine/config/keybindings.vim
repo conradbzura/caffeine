@@ -159,3 +159,9 @@ nnoremap <expr> <Left> col(".") > 1 ? 'h' : '<Left>l'
 "TODO determine source of other escape-key mapping
 "inoremap <Esc> <Right><Esc>
 
+" Format file (ctrl-k)
+map <C-A-F> :pyf /usr/share/clang/clang-format-3.8/clang-format.py<CR>
+imap <C-A-F> <C-O>:pyf /usr/share/clang/clang-format-3.8/clang-format.py<CR>
+
+" Toggle search highlighting (ctrl-h)
+map <C-H> :set hlsearch!<CR>
